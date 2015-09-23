@@ -1,10 +1,12 @@
 <template name="group">		
 	
-				<tr>
+				<tr class="{{validation}}">
 					<td style="color:{{color}}">{{groupName}} </td>
-			    	<td><input class="" maxlength="2048" name="" autocomplete="off" title="Year stabilization" type="text" id="yearStabilization" placeholder=" 2100"></td> 
-			    	<td><input class="" maxlength="2048" name="q" autocomplete="off" title="Year reduction" type="text" id="yearReduction" placeholder=" 2100"></td>
+			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Year stabilization" type="text" id="yearStabilization" placeholder=" 2100"></td> 
+			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Year reduction" type="text" id="yearReduction" placeholder=" 2100"></td>
 
-			    	<td><input class="" maxlength="2048" name="" autocomplete="off" title="reduction percentage" type="text" id="percentageReduction" placeholder=" 0%"></td> 
+			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="reduction percentage" type="text" id="percentageReduction" placeholder=" 0%"></td> 
+
+
 				</tr>
 </template>

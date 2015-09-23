@@ -1,12 +1,8 @@
 
 Template.group.events({
  "change #yearStabilization": function (event) { 
-  // var newValue = $(evt.target).val();
-  // var oldValue = groupsInputs.find(.get("year_id");
-  // if (newValue != oldValue) {
-  //   // value changed, let's do something
-  // }
-  // Session.set("year_id", newValue);
+      // Really basic validation graphical feedback
+      groupsInputs.update(this._id,{$set: {validation: ""}});
 
   var collectedValue = Number( $(event.target).val() );
       console.log("Collected",collectedValue);
@@ -31,6 +27,8 @@ Template.group.events({
 
       }else {
       console.log("yearStabilization incorrect");
+      groupsInputs.update(this._id,{$set: {validation: "has-error"}});
+
       }
     }
     
@@ -41,6 +39,7 @@ Template.group.events({
   },
 
  "change #yearReduction": function (event) { 
+      groupsInputs.update(this._id,{$set: {validation: ""}});
 
     var collectedValue = Number($(event.target).val());
 
@@ -54,6 +53,8 @@ Template.group.events({
 
       }else {
       console.log("yearReduction incorrect");
+      groupsInputs.update(this._id,{$set: {validation: "has-error"}});
+
       }
     }
     // Prevent default form submit
@@ -61,6 +62,8 @@ Template.group.events({
   },
 
  "change #percentageReduction": function (event) { 
+        groupsInputs.update(this._id,{$set: {validation: ""}});
+
   //TODO gérer 0,1 et 0.1 
     var collectedValue = Number($(event.target).val());
     if (collectedValue >= 0 && collectedValue < 101 ){
@@ -68,11 +71,16 @@ Template.group.events({
       console.log("percentageReduction",collectedValue, this.order);
       refreshData(this.order,this.groupName,this.yearStabilization,this.yearReduction,collectedValue);
     } else {
-      if (collectedValue ==0){
+      if (collectedValue == 0){
               refreshData(this.order,this.groupName,this.yearStabilization,this.yearReduction,0);
 
       }else {
       console.log("percentageReduction incorrect");
+      groupsInputs.update(this._id,{$set: {validation: "has-error"}});
+      // event.target.value = "";
+      // event.target.class =""
+
+
       }
     }
     // Prevent default form submit
@@ -94,7 +102,7 @@ Template.group.helpers({
 refreshData = function(order,groupName,yearStabilization,yearReduction, percentageReduction){
   console.log('refreshing data of',groupName,'with:', yearStabilization,yearReduction,percentageReduction);
      var stab  = Math.min(yearStabilization,yearReduction,2105) - 2015;
-     var redux = Math.max(yearReduction,yearStabilization,2015) - 2015;
+     var redux = Math.max(stab,yearReduction,2015) - 2015;
      console.log(" stab ",stab," redux ",redux);
   //Repopulate base data from 0 to stab
   for (var i = 0; i < stab; i++) {
@@ -109,8 +117,8 @@ refreshData = function(order,groupName,yearStabilization,yearReduction, percenta
 
 
   //iterate redux to end
-  // !! 92 is size of set array +1
- for (var k = redux+1; k < 92 ; k++) {
+  // !! we start following year
+ for (var k = redux+1; k < 91 ; k++) {
     emissionsData.series[order][k]= emissionsData.series[order][k-1]*(1-(percentageReduction / 100 ));
   };
 
@@ -155,7 +163,7 @@ refreshTemp = function(){
       
     };
   
-  tempData.datasets[0].data[i]=tempData.datasets[0].data[i-1]+(SumCO/600);
+  tempData.datasets[0].data[i]=tempData.datasets[0].data[i-1]+(SumCO/1200);
 
  };
 
