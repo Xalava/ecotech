@@ -1,0 +1,23 @@
+<template name="groupsList" >
+	<div class="table-responsive">		
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Group</th>
+			    	<th>Stabilization CO2 (y)</th> 
+			    	<th>Reduction CO2 (y)</th>
+
+			    	<th>Reduction CO2 (% per y)</th> 
+				</tr>
+			</thead>
+			<tbody>
+	      		{{#each groups}}
+		        	{{> group}}
+	      		{{/each}}
+  			</tbody>
+
+
+		</table>
+	</div>
+
+</template>

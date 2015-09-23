@@ -1,0 +1,22 @@
+/* CSS declarations go here */
+/* Chartist  */
+.ct-series-a .ct-line {
+  stroke: rgba(220,20,20,1);
+  stroke-width: 3px;
+
+}
+.ct-series-b .ct-line {
+  stroke: rgba(151,187,205,1);
+  stroke-width: 3px;
+}
+
+.ct-series-c .ct-line {
+  stroke: blue;
+  stroke-width: 3px;
+}
+
+.jumbotron {
+  background-color: #87CEFA;
+
+
+}
