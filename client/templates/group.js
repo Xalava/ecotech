@@ -160,7 +160,7 @@ refreshTemp = function(){
       for (var k = (i-1)*15; k < i*15; k++) {
         SumCO = emissionsData.series[j][k] + SumCO;
       };
-      
+      // TODO +defforestation - afforestation per country
     };
   
   tempData.datasets[0].data[i]=tempData.datasets[0].data[i-1]+(SumCO/1200);

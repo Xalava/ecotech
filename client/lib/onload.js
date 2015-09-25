@@ -13,8 +13,8 @@ emReference = {
 groupsList = [
       {name: "China",color:"rgba(220,20,20,1)",order:0},
       {name:"USA",color:"rgba(151,187,205,1)",order:1},
-      {name:"EU",color:"blue",order:1},
-      {name:"Developing",color:"brown",order:1}
+      {name:"EU",color:"#003399",order:1},
+      {name:"Developing",color:"#FDB45C",order:1}
       ];
 
 MAXORDER = 3;

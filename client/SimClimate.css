@@ -11,12 +11,36 @@
 }
 
 .ct-series-c .ct-line {
-  stroke: blue;
+  stroke: #003399;
+  stroke-width: 3px;
+}
+.ct-series-d .ct-line {
+stroke: #FDB45C;
   stroke-width: 3px;
 }
 
 .jumbotron {
-  background-color: #87CEFA;
-
+  background-color: rgba(151,187,205,1) !important;
+  /*66DFDD;*/
+/*  color: white !important;
+*/
 
 }
+
+/*
+        color:"#F7464A",
+        label: "Red"
+
+        color: "#46BFBD",
+        label: "Green"
+
+        color: "#FDB45C",
+        label: "Yellow"
+
+        color: "#949FB1",
+        label: "Grey"
+
+        color: "#4D5360",
+        label: "Dark Grey"
+
+];*/

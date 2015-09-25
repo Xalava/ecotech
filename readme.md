@@ -1,6 +1,9 @@
 # Sim Climate
 The COP21 Negociation Simulation 
 
+## TODO
+- add precise data
+- precise algorythme
 ## Roadmap features
 - Static Webpage
 - retreave results on a server
