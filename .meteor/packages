@@ -20,3 +20,6 @@ random
 ejson
 spacebars
 check
+service-configuration
+accounts-password
+ian:accounts-ui-bootstrap-3

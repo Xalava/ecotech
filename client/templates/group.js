@@ -146,7 +146,38 @@ refreshCharts = function(){
 
   var tempCtx = document.getElementById("tempChart").getContext("2d");
   new Chart(tempCtx).Line(tempData,{animationSteps: 5});
-  // window.tempChar.update();
+  // window.tempChar.update()
+
+var $chart = new Chartist.Line('.ct-chart', emissionsData, optionsChart);
+
+
+
+// var $toolTip = $chart
+//   .append('<div class="tooltip"></div>')
+//   .find('.tooltip')
+//   .hide();
+
+// $chart.on('mouseenter', '.ct-point', function() {
+//   var $point = $(this),
+//     value = $point.attr('ct:value'),
+//     seriesName = $point.parent().attr('ct:series-name');
+//   $toolTip.html(seriesName + '<br>' + value).show();
+// });
+
+// $chart.on('mouseleave', '.ct-point', function() {
+//   $toolTip.hide();
+// });
+
+// $chart.on('mousemove', function(event) {
+//   $toolTip.css({
+//     left: (event.offsetX || event.originalEvent.layerX) - $toolTip.width() / 2 - 10,
+//     top: (event.offsetY || event.originalEvent.layerY) - $toolTip.height() - 40
+//   });
+// });
+
+
+
+
 };
 
 

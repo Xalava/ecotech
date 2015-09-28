@@ -8,6 +8,9 @@
 
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
 	<!-- papaer -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
 
@@ -18,17 +21,61 @@
 </head>
 
 <body>
-
-
+<!-- <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+	    <div class="navbar-header">
+	        <a class="navbar-brand" href="#">Sim Climate <img src="logo.png"> </a>
+	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	        </button>
+	    </div>
+	    <div class="navbar-collapse collapse ">
+	        <ul class="nav navbar-nav">
+	            
+	        </ul>
+	        <ul class="nav navbar-nav navbar-right">
+	        	<li class=""><a href="#">About</a></li>
+	            <li>{{> loginButtons}}</li>
+	        </ul>
+	    </div>
+	 </div> 
+</div>
+ -->
 
 <div class="container">
 	<header class="jumbotron">
-		<h1>Sim Climate  <img src="favicon.png"></h1>
-		<p>The COP21 Negociation Simulation App</p>
+		<h2> Sim Climate  <img src="favicon.png"></h2>
+
+		<button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#about">About</button>
+		<button type="button" class="btn btn-default pull-right" id="loginbtn">{{> loginButtons}}</button>
+		<p> The COP21 Negociation Simulation App</p>
 		<p><small> <I>  v 0.3.2 alpha </I></small></p>
 
-		
+
 	</header>
+
+				<div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">A propos</h4>
+			      </div>
+			      <div class="modal-body">
+			      	<p>The 2015 United Nations Climate Change Conference, will be held in a Paris, suburb, Le Bourget from November 30 to December 11. It will be the 21st yearly session of the Conference of the Parties (COP 21) to the 1992 United Nations Framework Convention on Climate Change</p>
+			        <p>The overarching goal of the Convention is to reduce greenhouse gas emissions to limit the global temperature increase to 2 °C above pre-industrial levels. Christiana Figueres acknowledged in the closing briefing at the 2012 Doha conference <i>"the current pledges under the second commitment period of the Kyoto protocol are clearly not enough to guarantee that the temperature will stay below 2 °C and there is an ever increasing gap between the action of countries and what the science tells us."</i></p>
+					<p><small><i>Source : wikipedia</i></small></p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		
 
 	<div class="row">
 		<section class="charts">

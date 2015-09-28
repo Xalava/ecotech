@@ -27,6 +27,20 @@ stroke: #FDB45C;
 
 }
 
+.navbar {
+  background-color: rgba(151,187,205,1) !important;
+  /*66DFDD;*/
+/*  color: white !important;
+*/
+
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px;
+    }
+}
+
 /*
         color:"#F7464A",
         label: "Red"
@@ -44,3 +58,12 @@ stroke: #FDB45C;
         label: "Dark Grey"
 
 ];*/
+
+#loginbtn li {
+  list-style-type: none;
+
+}
+#loginbtn li .dropdown-toggle {
+  color: white;
+
+}
