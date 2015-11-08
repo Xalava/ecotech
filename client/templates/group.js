@@ -1,5 +1,66 @@
 
 Template.group.events({
+    "click .delete": function (event) {
+    // var coevent = coevents.findOne(coevId);
+    // if (coevent.private && coevent.owner !== Meteor.userId()) {
+    //   // If the task is private, make sure only the owner can delete it
+    //   throw new Meteor.Error("not-authorized");
+    // } else {
+
+      participants.remove(this._id);
+    
+  },
+
+
+"change #yearStabilization": function (event) { 
+      // Really basic validation graphical feedback
+      groupsInputs.update(this._id,{$set: {validation: ""}});
+
+  var collectedValue = Number( $(event.target).val() );
+      console.log("Collected",collectedValue);
+
+  if (collectedValue >= 2015 && collectedValue < 2106){
+
+    // if !(collectedValue <= this.yearReduction ) {
+
+      groupsInputs.update(this._id,{$set: {yearStabilization: collectedValue}});
+
+      console.log("yearStabilization",collectedValue, this.order);
+
+      refreshData(this.order,this.groupName,collectedValue,this.yearReduction,this.percentageReduction);
+
+      // } else {
+      //   console.log("inf to reduction year");
+      // }
+ 
+    } else {
+      if (collectedValue==0) {
+              refreshData(this.order,this.groupName,2105,this.yearReduction,this.percentageReduction);
+
+      }else {
+      console.log("yearStabilization incorrect");
+      groupsInputs.update(this._id,{$set: {validation: "has-error"}});
+
+      }
+    }
+    
+
+    return false;
+
+
+  },
+
+
+
+
+
+
+
+
+
+
+
+
  "change #yearStabilization": function (event) { 
       // Really basic validation graphical feedback
       groupsInputs.update(this._id,{$set: {validation: ""}});
@@ -91,6 +152,17 @@ Template.group.events({
 });
 
 Template.group.helpers({
+  donneesmoy: function() {
+    // debug function to understand dates
+    var somme =0;
+    for (var i = this.donnees.length - 1; i >= 0; i--) {
+      somme =this.donnees[i] + somme;
+    };
+
+    var moy = somme / this.donnees.length;
+    return moy;
+
+  },
 
 
 

@@ -1,9 +1,10 @@
-# Sim Climate
-The COP21 Negociation Simulation 
+# EcoTech
+Parce que
 
-## TODO
-- add precise data
-- precise algorythme
+
+
+
+# Archives
  - tabs for several grpahs
 ## Roadmap features
 - Static Webpage
@@ -11,6 +12,8 @@ The COP21 Negociation Simulation
 - desktop (offline ) version
 - have list of room on server
 - allow apps
+- put global objective > to 
+- bilingual shit
 
 ## Technologies
 	Graphiques:
@@ -21,6 +24,7 @@ The COP21 Negociation Simulation
 		amchart
 		c3.js
 		highcharts: dowload + print , tooltip , autoadpat
+		google charts: maps
 	Main page
 		html/CSS/JS
 		React?
@@ -28,10 +32,15 @@ The COP21 Negociation Simulation
 		boostratp
 		meteor poly
 		Ember?
+
+		https://github.com/kriasoft/react-starter-kit
+		ou 
+		web starter kit de google
 	Design
 		Bootstrap 4
 	Server
 		Meteor?
+			flowrouter
 
 	Desktop
 		Webktip

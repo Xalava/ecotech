@@ -1,31 +1,33 @@
 <template name="group">		
 	
 				<tr class="{{validation}}">
-					<td ><button style="background-color:{{color}}; color:white;" type="button" class="btn btn-block" data-toggle="modal" data-target="#{{groupName}}Strat">{{groupName}}</button></td>
-			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Year stabilization" type="text" id="yearStabilization" placeholder="2100"></td> 
-			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Year reduction" type="text" id="yearReduction" placeholder="2100"></td>
+					<td ><button style="background-color:{{color}}; color:white;" type="button" class="btn btn-block" data-toggle="modal" data-target="#{{prenom}}Strat">{{prenom}}</button></td>
+			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Consultation" type="text" id="consultation" placeholder="100%"></td> 
+			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Nombre de posts" type="text" id="posts" placeholder="100%"></td>
 
-			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="reduction percentage" type="text" id="percentageReduction" placeholder="0%"></td> 
+			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Suppression de donnees" type="text" id="donnees" placeholder="0%"></td> 
+			    	<td>     <button class="delete glyphicon glyphicon-remove btn btn-alert btn-sm"></button></td>
 
-			    	<td></td> 
 
 
-			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Deforestation" type="text" id="deforestation" placeholder="100%"></td> 
-			    	<td><input class="form-control" maxlength="2048" name="" autocomplete="off" title="Afforestation" type="text" id="afforestation" placeholder="0%"></td>
 				</tr>
 
-			<div class="modal fade" id="{{groupName}}Strat" tabindex="-1" role="dialog" aria-labelledby="{{groupName}} strategy">
+			<div class="modal fade" id="{{prenom}}Strat" tabindex="-1" role="dialog" aria-labelledby="{{prenom}} strategy">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="{{groupName}}Label">{{groupName}}'s Strategy</h4>
+			        <h4 class="modal-title" id="{{prenom}}Label">Consomation de {{prenom}}</h4>
 			      </div>
 			      <div class="modal-body">
-			      	{{strategie}}
+			      	{{description}}
+			      	<p> Consomation electrique par semaine : {{consultation}}</p>
+			  		<p> Nombre de posts par semaine: {{posts}}</p>
+			      	<p> Donnes stockées en moyenne : {{donneesmoy}}</p>
+
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 			  </div>

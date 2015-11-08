@@ -19,6 +19,16 @@ stroke: #FDB45C;
   stroke-width: 3px;
 }
 
+.ct-series-e .ct-line {
+  stroke: #59922b;
+  stroke-width: 3px;
+}
+
+.ct-series-f .ct-line {
+  stroke: #453d3f;
+  stroke-width: 3px;
+}
+
 .jumbotron {
   background-color: rgba(151,187,205,1) !important;
   /*66DFDD;*/
@@ -41,23 +51,6 @@ stroke: #FDB45C;
     }
 }
 
-/*
-        color:"#F7464A",
-        label: "Red"
-
-        color: "#46BFBD",
-        label: "Green"
-
-        color: "#FDB45C",
-        label: "Yellow"
-
-        color: "#949FB1",
-        label: "Grey"
-
-        color: "#4D5360",
-        label: "Dark Grey"
-
-];*/
 
 #loginbtn li {
   list-style-type: none;
