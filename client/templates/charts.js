@@ -2,6 +2,8 @@
 
 
 Template.charts.onRendered(function (){
+    Chart.defaults.global.responsive = true;
+
     optionsChartjs = {
 
         ///Boolean - Whether grid lines are shown across the chart

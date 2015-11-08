@@ -5,7 +5,6 @@ Template.group.events({
         //   // If the task is private, make sure only the owner can delete it
         //   throw new Meteor.Error("not-authorized");
         // } else {
-
         participants.remove(this._id);
     }
 });
@@ -15,7 +14,7 @@ refreshTemp = function () {
     // start at 2 step
     var list = participants.find().fetch();
 
-    var color= {0: "rgba(232,68,53,1)", 1: "rgba(58,191,240,1)", 2: "rgba(255,242,112,1)"}
+    var color= {0: "rgba(232,68,53,1)", 1: "rgba(58,191,240,1)", 2: "rgba(255,242,112,1)"};
     var dataset =
         {
             label: "projection",
@@ -29,11 +28,10 @@ refreshTemp = function () {
         };
     for (i = 0, j = list[i]; i < list.length; j = list[++i]) {
         dataset.data = j.stockage;
-        console.log(color[i]);
-        dataset.fillColor = color[i].replace(',1)',',0.2)');
-        dataset.strokeColor = color[i];
-        dataset.pointColor = color[i];
-        dataset.pointHighlightStroke = color[i];
+        dataset.fillColor = color[i%2].replace(',1)',',0.2)');
+        dataset.strokeColor = color[i%2];
+        dataset.pointColor = color[i%2];
+        dataset.pointHighlightStroke = color[i%2];
         tempData.datasets[i] = dataset;
         console.log(dataset)
     }
