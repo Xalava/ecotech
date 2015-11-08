@@ -1,0 +1,62 @@
+<template name="profil">
+
+  <form class="register">
+
+    <div class="center">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-info active">
+          <input type="radio" name="profil" id="profil" autocomplete="off" checked>
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" name="profil" id="profil" autocomplete="off">
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" name="profil" id="profil" autocomplete="off">
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <b> Prénom: </b>
+        <br/>
+        <input class="form-control" maxlength="2048" name="" autocomplete="off" title="Prenom" type="text" id="prenom"
+               placeholder="Prenom">
+      </div>
+    </div>
+    <br/>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <b> Consommation: </b>
+        <br/>
+        <input class="form-control" maxlength="2048" name=""
+               autocomplete="off" title="consultation"
+               type="text" id="conso" placeholder="">
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <b> Post : </b>
+        <br/>
+        <input class="form-control" maxlength="2048" name=""
+               autocomplete="off" title="post"
+               type="text" id="post" placeholder="">
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <b> Stockage : </b>
+        <br/>
+        <input class="form-control" maxlength="2048" name=""
+               autocomplete="off" title="donnee"
+               type="text" id="storage" placeholder="">
+      </div>
+    </div>
+    <br/>
+    <div class="clearfix">
+      <div class="pull-right">
+        <input type="submit" value="Rejoindre la partie" class="register btn btn-default">
+      </div>
+    </div>
+
+    <!-- <button type="button" class="btn btn-default" id="valider">Valider</button> -->
+  </form>
+
+</template>
