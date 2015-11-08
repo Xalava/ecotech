@@ -1,274 +1,41 @@
-
 Template.group.events({
     "click .delete": function (event) {
-    // var coevent = coevents.findOne(coevId);
-    // if (coevent.private && coevent.owner !== Meteor.userId()) {
-    //   // If the task is private, make sure only the owner can delete it
-    //   throw new Meteor.Error("not-authorized");
-    // } else {
+        // var coevent = coevents.findOne(coevId);
+        // if (coevent.private && coevent.owner !== Meteor.userId()) {
+        //   // If the task is private, make sure only the owner can delete it
+        //   throw new Meteor.Error("not-authorized");
+        // } else {
 
-      participants.remove(this._id);
-    
-  },
-
-
-"change #yearStabilization": function (event) { 
-      // Really basic validation graphical feedback
-      groupsInputs.update(this._id,{$set: {validation: ""}});
-
-  var collectedValue = Number( $(event.target).val() );
-      console.log("Collected",collectedValue);
-
-  if (collectedValue >= 2015 && collectedValue < 2106){
-
-    // if !(collectedValue <= this.yearReduction ) {
-
-      groupsInputs.update(this._id,{$set: {yearStabilization: collectedValue}});
-
-      console.log("yearStabilization",collectedValue, this.order);
-
-      refreshData(this.order,this.groupName,collectedValue,this.yearReduction,this.percentageReduction);
-
-      // } else {
-      //   console.log("inf to reduction year");
-      // }
- 
-    } else {
-      if (collectedValue==0) {
-              refreshData(this.order,this.groupName,2105,this.yearReduction,this.percentageReduction);
-
-      }else {
-      console.log("yearStabilization incorrect");
-      groupsInputs.update(this._id,{$set: {validation: "has-error"}});
-
-      }
+        participants.remove(this._id);
     }
-    
-
-    return false;
-
-
-  },
-
-
-
-
-
-
-
-
-
-
-
-
- "change #yearStabilization": function (event) { 
-      // Really basic validation graphical feedback
-      groupsInputs.update(this._id,{$set: {validation: ""}});
-
-  var collectedValue = Number( $(event.target).val() );
-      console.log("Collected",collectedValue);
-
-  if (collectedValue >= 2015 && collectedValue < 2106){
-
-    // if !(collectedValue <= this.yearReduction ) {
-
-      groupsInputs.update(this._id,{$set: {yearStabilization: collectedValue}});
-
-      console.log("yearStabilization",collectedValue, this.order);
-
-      refreshData(this.order,this.groupName,collectedValue,this.yearReduction,this.percentageReduction);
-
-      // } else {
-      //   console.log("inf to reduction year");
-      // }
- 
-    } else {
-      if (collectedValue==0) {
-              refreshData(this.order,this.groupName,2105,this.yearReduction,this.percentageReduction);
-
-      }else {
-      console.log("yearStabilization incorrect");
-      groupsInputs.update(this._id,{$set: {validation: "has-error"}});
-
-      }
-    }
-    
-
-    return false;
-
-
-  },
-
- "change #yearReduction": function (event) { 
-      groupsInputs.update(this._id,{$set: {validation: ""}});
-
-    var collectedValue = Number($(event.target).val());
-
-    if (collectedValue >= 2015 && collectedValue < 2106 ){
-      groupsInputs.update(this._id,{$set: {yearReduction: collectedValue}});
-      console.log("yearReduction",collectedValue, this.order);
-      refreshData(this.order,this.groupName,this.yearStabilization,collectedValue,this.percentageReduction);
-    } else {
-      if(collectedValue == 0){
-              refreshData(this.order,this.groupName,this.yearStabilization,2105,this.percentageReduction);
-
-      }else {
-      console.log("yearReduction incorrect");
-      groupsInputs.update(this._id,{$set: {validation: "has-error"}});
-
-      }
-    }
-    // Prevent default form submit
-    return false;
-  },
-
- "change #percentageReduction": function (event) { 
-        groupsInputs.update(this._id,{$set: {validation: ""}});
-
-  //TODO gérer 0,1 et 0.1 
-    var collectedValue = Number($(event.target).val());
-    if (collectedValue >= 0 && collectedValue < 101 ){
-      groupsInputs.update(this._id,{$set: {percentageReduction: collectedValue}});
-      console.log("percentageReduction",collectedValue, this.order);
-      refreshData(this.order,this.groupName,this.yearStabilization,this.yearReduction,collectedValue);
-    } else {
-      if (collectedValue == 0){
-              refreshData(this.order,this.groupName,this.yearStabilization,this.yearReduction,0);
-
-      }else {
-      console.log("percentageReduction incorrect");
-      groupsInputs.update(this._id,{$set: {validation: "has-error"}});
-      // event.target.value = "";
-      // event.target.class =""
-
-
-      }
-    }
-    // Prevent default form submit
-    return false;
-  },
-
-
 });
 
-Template.group.helpers({
-  donneesmoy: function() {
-    // debug function to understand dates
-    var somme =0;
-    for (var i = this.donnees.length - 1; i >= 0; i--) {
-      somme =this.donnees[i] + somme;
-    };
+refreshTemp = function () {
+    //refreshing temp summing up prior temp + CO2 for prior 15 years
+    // start at 2 step
+    var list = participants.find().fetch();
 
-    var moy = somme / this.donnees.length;
-    return moy;
-
-  },
-
-
-
-  
-
-});
-
-
-refreshData = function(order,groupName,yearStabilization,yearReduction, percentageReduction){
-  console.log('refreshing data of',groupName,'with:', yearStabilization,yearReduction,percentageReduction);
-     var stab  = Math.min(yearStabilization,yearReduction,2105) - 2015;
-     var redux = Math.max(stab,yearReduction,2015) - 2015;
-     console.log(" stab ",stab," redux ",redux);
-  //Repopulate base data from 0 to stab
-  for (var i = 0; i < stab; i++) {
-      emissionsData.series[order][i]= emReference[groupName][i];
-
-  };
-
-  // iterate stap to redux
-  for (var j = stab ; j <= redux ; j++) {
-    emissionsData.series[order][j]= emReference[groupName][stab];
-  };
-
-
-  //iterate redux to end
-  // !! we start following year
- for (var k = redux+1; k < 91 ; k++) {
-    emissionsData.series[order][k]= emissionsData.series[order][k-1]*(1-(percentageReduction / 100 ));
-  };
-
-
-
-
-  refreshTemp();
-
-  refreshCharts();
-
-
-
-  console.log("refreshed! (",i,j,k,")");
-  return false;
-  
-
-};
-
-refreshCharts = function(){
-  new Chartist.Line('.ct-chart', emissionsData, optionsChart);
-  // new Chartist.Line('.ct-chart2', emissionsData, optionsChart);
-  // var graphTemp=Session.get('chartTemp');
-  // tempData.handle.update();
-
-
-  var tempCtx = document.getElementById("tempChart").getContext("2d");
-  new Chart(tempCtx).Line(tempData,{animationSteps: 5});
-  // window.tempChar.update()
-
-var $chart = new Chartist.Line('.ct-chart', emissionsData, optionsChart);
-
-
-
-// var $toolTip = $chart
-//   .append('<div class="tooltip"></div>')
-//   .find('.tooltip')
-//   .hide();
-
-// $chart.on('mouseenter', '.ct-point', function() {
-//   var $point = $(this),
-//     value = $point.attr('ct:value'),
-//     seriesName = $point.parent().attr('ct:series-name');
-//   $toolTip.html(seriesName + '<br>' + value).show();
-// });
-
-// $chart.on('mouseleave', '.ct-point', function() {
-//   $toolTip.hide();
-// });
-
-// $chart.on('mousemove', function(event) {
-//   $toolTip.css({
-//     left: (event.offsetX || event.originalEvent.layerX) - $toolTip.width() / 2 - 10,
-//     top: (event.offsetY || event.originalEvent.layerY) - $toolTip.height() - 40
-//   });
-// });
-
-
-
-
-};
-
-
-refreshTemp = function(){
-  //refreshing temp summing up prior temp + CO2 for prior 15 years
-  // start at 2 step
- for (var i = 1; i <= 6; i++) {
-    var SumCO= 0;
-    // TODO: maxorder devrait etre une variable
-    for (var j = MAXORDER; j >= 0; j--) {
-      for (var k = (i-1)*15; k < i*15; k++) {
-        SumCO = emissionsData.series[j][k] + SumCO;
-      };
-      // TODO +defforestation - afforestation per country
-    };
-  
-  tempData.datasets[0].data[i]=tempData.datasets[0].data[i-1]+(SumCO/1200);
-
- };
-
-
+    var color= {0: "rgba(232,68,53,1)", 1: "rgba(58,191,240,1)", 2: "rgba(255,242,112,1)"}
+    var dataset =
+        {
+            label: "projection",
+            fillColor: "rgba(220,20,20,0.2)",
+            strokeColor: "rgba(220,20,20,1)",
+            pointColor: "rgba(220,20,20,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        };
+    for (i = 0, j = list[i]; i < list.length; j = list[++i]) {
+        dataset.data = j.stockage;
+        console.log(color[i]);
+        dataset.fillColor = color[i].replace(',1)',',0.2)');
+        dataset.strokeColor = color[i];
+        dataset.pointColor = color[i];
+        dataset.pointHighlightStroke = color[i];
+        tempData.datasets[i] = dataset;
+        console.log(dataset)
+    }
+    console.log(tempData)
 };

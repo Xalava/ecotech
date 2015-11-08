@@ -63,72 +63,29 @@ Template.charts.onRendered(function (){
         tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
 
         // String - Template string for multiple tooltips
-        multiTooltipTemplate: "<%= value %>",
+        multiTooltipTemplate: "<%= value %>"
 
     };
     refreshTemp();
-    // var emCtx = document.getElementById("emChart").getContext("2d");
-
-    // global variable
     var tempCtx = document.getElementById("tempChart").getContext("2d");
     window.tempChart = new Chart(tempCtx).Line(tempData);
 
-
-
-
-    // chartTemp.generateLegend();
-        //  //Chart.js v 2.0 
-        //  var chartEm = new Chart(emCtx, {
-        //      type: 'line',
-        //      data: emData, 
-        //      options: options
-        // });
-
-        //       var chartemp = new Chart(emCtx, {
-        //      type: 'line',
-        //      data: tempData
-        // });
-
-        
-        // Tracker.autorun()
-
-
-    // All you need to do is pass your configuration as third parameter to the chart function
     new Chartist.Line('.ct-chart', emissionsData,optionsChart);
-
-      // new Chartist.Line('.ct-chart2', temp, optionsChart);
-
-
-
 });
 
 Template.charts.helpers({
-
-
-
-
-
 });
 
 
 
 Template.charts.onCreated(function () {
-   //  from startup
-
-
-
 });
 
 Template.charts.events({
    "click #reloadgraphs": function (event) { 
       console.log('reloaded');
-
     new Chartist.Line('.ct-chart', emissionsData, optionsChart);
-
-
-  },
-
-
+  }
 });
 
  // myLiveChart.datasets[1].points[indexToUpdate].value = Math.random() * 100;

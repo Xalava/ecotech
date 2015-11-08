@@ -1,19 +1,20 @@
 <template name="profil">
-
+  <br/>
+  <br/>
   <form class="register">
 
     <div class="center">
       <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active">
-          <input type="radio" name="profil" id="profil" autocomplete="off" checked>
+        <label class="btn btn-primary active" id="avatar1">
+          <input type="radio" title="profil" name="profil" autocomplete="off">
           <img src="avatar1.svg">
         </label>
-        <label class="btn btn-primary">
-          <input type="radio" name="profil" id="profil" autocomplete="off">
+        <label class="btn btn-primary" id="avatar2">
+          <input type="radio" title="profil" name="profil" autocomplete="off">
           <img src="avatar2.svg">
         </label>
-        <label class="btn btn-primary">
-          <input type="radio" name="profil" id="profil" autocomplete="off">
+        <label class="btn btn-primary" id="avatar3">
+          <input type="radio" title="profil" name="profil" autocomplete="off">
           <img src="avatar3.svg">
         </label>
       </div>
@@ -25,7 +26,12 @@
       <div class="col-xs-12 col-md-4">
         <b> Prénom: </b>
         <br/>
-        <input class="form-control" maxlength="2048" name="" autocomplete="off" title="Prenom" type="text" id="prenom"
+        <input class="form-control" maxlength="2048" name=""
+               autocomplete="off"
+               title="Prenom"
+               type="text"
+               id="prenom"
+               value="Joueur 1"
                placeholder="Prenom">
       </div>
     </div>
@@ -33,24 +39,27 @@
 
     <div class="row">
       <div class="col-xs-12 col-md-4">
-        <b> Consommation: </b>
+        <b> Consommation (Heures/semaines): </b>
         <br/>
         <input class="form-control" maxlength="2048" name=""
                autocomplete="off" title="consultation"
+               value="11.45"
                type="text" id="conso" placeholder="">
       </div>
       <div class="col-xs-12 col-md-4">
-        <b> Post : </b>
+        <b> Post (Nombres/semaines): </b>
         <br/>
         <input class="form-control" maxlength="2048" name=""
                autocomplete="off" title="post"
+               value="300"
                type="text" id="post" placeholder="">
       </div>
       <div class="col-xs-12 col-md-4">
-        <b> Stockage : </b>
+        <b> Données stocké (Go): </b>
         <br/>
         <input class="form-control" maxlength="2048" name=""
                autocomplete="off" title="donnee"
+               value="6"
                type="text" id="storage" placeholder="">
       </div>
     </div>
