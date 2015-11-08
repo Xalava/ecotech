@@ -65,14 +65,28 @@ stroke: #FDB45C;
     text-align: center;
 }
 
-.video{
-
+.btn-primary{
+    background-color: #ffffff !important;
+    border-color: #fff !important;
+    border-radius: 10px !important;
 }
 
-.images{
-
+.btn-primary.active{
+    background-color: #15569f !important;
 }
 
-.microblog{
+.prenom{
+    background-color: #15569f;
+}
 
+.thibault{
+    background-color: rgba(232,68,53,1);
+}
+
+.valentin{
+    background-color: rgba(58,191,240,1);
+}
+
+.aude{
+    background-color: rgba(255,242,112,1);
 }

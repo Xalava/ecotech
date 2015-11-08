@@ -1,4 +1,6 @@
 <template name="profil">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
   <br/>
   <br/>
   <form class="register">
@@ -39,6 +41,12 @@
 
     <div class="row">
       <div class="col-xs-12 col-md-4">
+        <div class="row">
+          <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <img src="internet.svg" style="min-width: 100%; width: 100%;">
+          </div>
+          <br/>
+        </div>
         <b> Consommation (Heures/semaines): </b>
         <br/>
         <input class="form-control" maxlength="2048" name=""
@@ -47,6 +55,12 @@
                type="text" id="conso" placeholder="">
       </div>
       <div class="col-xs-12 col-md-4">
+        <div class="row">
+          <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <img src="post.svg" style="min-width: 100%; width: 100%;">
+          </div>
+          <br/>
+        </div>
         <b> Post (Nombres/semaines): </b>
         <br/>
         <input class="form-control" maxlength="2048" name=""
@@ -55,6 +69,12 @@
                type="text" id="post" placeholder="">
       </div>
       <div class="col-xs-12 col-md-4">
+        <div class="row center">
+          <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <img src="app.svg" style="min-width: 100%; width: 100%;">
+          </div>
+          <br/>
+        </div>
         <b> Données stocké (Go): </b>
         <br/>
         <input class="form-control" maxlength="2048" name=""
@@ -72,5 +92,6 @@
 
     <!-- <button type="button" class="btn btn-default" id="valider">Valider</button> -->
   </form>
-
+    </div>
+  </div>
 </template>
