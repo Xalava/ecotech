@@ -17,10 +17,14 @@
     </div> -->
 
     <div class="clearfix">
-      <a href="/profil" class="pull-right">
-        <button type="button" class="btn btn-default">Ajouter un joueur</button>
+      <a href="/profil" role="button" class="btn btn-default pull-right ">
+        Ajouter un joueur
       </a>
+
+      <button style="color:white;" type="button" class="{{prenom}} prenom btn btn-block" data-toggle="modal" data-target="#{{prenom}}Strat">{{prenom}}</button>
     </div>
+
+
 
     <section class="inputs">
         {{> groupsList }}

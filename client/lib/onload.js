@@ -2,7 +2,6 @@ groupsInputs = new Meteor.Collection(null);
 
 // Emission data in Data.js
 
-// global Setting
 
 var yearLabels= ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"];
 tempData = {

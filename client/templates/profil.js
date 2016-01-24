@@ -9,21 +9,25 @@ Template.profil.events({
     },
 
     'submit .register': function (event) {
+        console.log("Submit");
+
         event.preventDefault();
-        // récupreation
+        // recuperation
         var prenom = event.target.prenom.value;
-        var profil = event.target.profil.value;
+        var avatar = event.target.avatar.value;
+        var couleur = event.target.couleur.value;
 
         var conso = parseFloat(event.target.conso.value);
         var post = parseFloat(event.target.post.value);
         var storage = parseFloat(event.target.storage.value);
 
+        //initialisation
         var stockage = [];
-        stockage[4] = storage*0.1;
-        stockage[3] = stockage[4]/2;
-        stockage[2] = stockage[3]/2;
-        stockage[1] = stockage[2]/2;
-        stockage[0] = stockage[1]/2;
+        stockage[4] = storage*0.1; // 0.1 c'était pour l'échelle du graph?
+        stockage[3] = stockage[4]/1.4;
+        stockage[2] = stockage[3]/1.4;
+        stockage[1] = stockage[2]/1.4;
+        stockage[0] = stockage[1];
 
         for (var i = 5; i <= 10; i++) {
             stockage[i] = stockage[i - 1]+post*0.001;
@@ -32,7 +36,8 @@ Template.profil.events({
         // inserer
         idparticipant = participants.insert({
             prenom: prenom,
-            profil: profil,
+            avatar: avatar,
+            couleur:couleur,
             createdAt: new Date(), // current time
 
             conso: conso,
@@ -40,6 +45,25 @@ Template.profil.events({
             stockage: stockage
         });
         Router.go('/global', idparticipant);
-    }
+    },
+
+    'change #consoSlider': function (event) {
+
+        var collectedValue = Number( $(event.target).val() );
+        document.querySelector('#conso').value = collectedValue;
+    },
+    'change #postSlider': function (event) {
+
+        var collectedValue = Number( $(event.target).val() );
+        document.querySelector('#post').value = collectedValue;
+    },
+    'change #storageSlider': function (event) {
+
+        var collectedValue = Number( $(event.target).val() );
+        document.querySelector('#storage').innerHTML = collectedValue;
+    },
+
+
+
 });
 
