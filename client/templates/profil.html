@@ -1,13 +1,15 @@
 <template name="profil">
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+    <div class="col-xs-12">
   <br/>
   <br/>
 
   <form class="register">
 
     <div class="center">
+      <!-- <label for="avatar"> Avatar </label> -->
       <div class="btn-group" data-toggle="buttons">
+
         <div class="btn btn-primary active" id="avatar1">
           <input type="radio" title="avatar" name="avatar" autocomplete="off">
           <img src="avatar1.svg">
@@ -27,22 +29,22 @@
     <br/>
     <div class="row">
       <div class="col-xs-12 col-md-4 col-md-offset-1">
-        <b> Prénom: </b>
+        <label> Prénom </label>
         <br/>
         <input class="form-control" maxlength="2048" name=""
                autocomplete="off"
                title="Prenom"
                type="text"
                id="prenom"
-               value="Joueur 1"
+               value="Visiteur"
                placeholder="Prenom">
       </div>
 
       <div class="col-xs-12 col-md-4 col-md-offset-1">
-        <b> Couleur: </b>
+        <label> Couleur </label>
         <br/>
           <input type="color" value="#3bbff0" list="colors" title="couleur" 
-                id="couleur" style="width:100%;text-align:center;">
+                id="couleur" style="width:100%;text-align:center;" class="form-group">
             <datalist id="colors">
               <option>#e84436</option>
               <option>#3bbff0</option>
@@ -56,77 +58,57 @@
     <br/>
 
 
-    <div class="row">
-      <div class="col-xs-12 col-md-3">
+    <div class="row dataInput">
+      <div class="col-xs-12 col-md-6">
         <div class="row">
-          <div class="col-xs-12 col-md-4 col-md-offset-4">
-            <img src="internet.svg" style="min-width: 100%; width: 100%;">
+          <div class="col-xs-4">
+            <img src="internet.svg" class="img-responsive">
           </div>
-          <br/>
+          <div class="col-xs-8">
+            <label for="conso"> Navigation (Heures/jour): <output id="consoValue" class="">3</output></label>
+            <input type="range" min="0" max="16" value="3" id="conso" onchange="consoValue.value=value">
         </div>
-        <b> Navigation (Heures/jour): </b> <span class="badge" id="conso"></span>
-        <!-- <br/> -->
-        <input class="" maxlength="8" name=""
-               autocomplete="off" title="consultation"
-               value="3"
-               type="text" id="conso" placeholder="">
-
-
-      <input class="form-control" type="range" min="0" max="24" value="3" id="consoSlider">
-
-
-
       </div>
-      <div class="col-xs-12 col-md-3">
+     </div>
+
+      <div class="col-xs-12 col-md-6">
         <div class="row">
-          <div class="col-xs-12 col-md-4 col-md-offset-4">
-            <img src="post.svg" style="min-width: 100%; width: 100%;">
+          <div class="col-xs-4">
+            <img src="post.svg" class="img-responsive">
           </div>
-          <br/>
+          <div class="col-xs-8">
+            <label for="post"> Mails (Nombre/jour): <output id="postValue" class="">10</output></label>
+            <input type="range" min="0" max="300" value="10" id="post" onchange="postValue.value=value">
+         </div>
         </div>
-        <b> Mails (Nombre/jour): </b>
-        <br/>
-        <input class="form-control" maxlength="8" name=""
-               autocomplete="off" title="post"
-               value="10"
-               type="text" id="post" placeholder="">
-        <input type="range" min="0" max="200" value="10" id="postSlider">
-
       </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="row center">
-          <div class="col-xs-12 col-md-4 col-md-offset-4">
-            <img src="app.svg" style="min-width: 100%; width: 100%;">
+
+      <div class="col-xs-12 col-md-6">
+        <div class="row">
+          <div class="col-xs-4">
+            <img src="app.svg" class="img-responsive">
           </div>
-          <br/>
+          <div class="col-xs-8">
+            <label for="video"> Vidéos en streaming (H/jour): <output id="videoValue" class="">2</output></label>
+            <input type="range" min="0" max="16" value="2" step=".2" id="video" onchange="videoValue.value=value">
         </div>
-        <b> Vidéos en streaming (Heures/jour) </b>
-        <br/>
-        <input class="form-control" maxlength="8" name=""
-               autocomplete="off" title="donnee"
-               value="6"
-               type="text" id="storage" placeholder="">
-        <input type="range" min="0" max="1000" value="6" id="storageSlider">
-
       </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="row center">
-          <div class="col-xs-12 col-md-4 col-md-offset-4">
-            <img src="controller.svg" style="min-width: 100%; width: 100%;">
+      </div>
+          
+
+      <div class="col-xs-12 col-md-6">
+        <div class="row ">
+          <div class="col-xs-4">
+            <img src="controller.svg" class="img-responsive">
           </div>
-          <br/>
+          <div class="col-xs-8">
+            <label for="jeu"> Jeux videos (Heures/jour): <output id="jeuValue">1</output></label>
+            <input type="range" min="0" max="16" value="1" step=".5" id="jeu" onchange="jeuValue.value=value">
+          </div>
         </div>
-        <b> Jeux videos (Heures/jour): </b>
-        <br/>
-        <input class="form-control" maxlength="8" name=""
-               autocomplete="off" title="donnee"
-               value="6"
-               type="text" id="storage" placeholder="">
-        <input type="range" min="0" max="1000" value="6" id="storageSlider">
-
       </div>
-    </div>
-    <br/>
+
+    </div> <!-- endrow dataInput -->
 
     <div class="clearfix">
       <div class="pull-right">

@@ -1,3 +1,5 @@
+// var currentVisiteur;
+
 Template.profil.onRendered(function () {
     //creer l'user
 });
@@ -9,7 +11,6 @@ Template.profil.events({
     },
 
     'submit .register': function (event) {
-        console.log("Submit");
 
         event.preventDefault();
         // recuperation
@@ -19,22 +20,23 @@ Template.profil.events({
 
         var conso = parseFloat(event.target.conso.value);
         var post = parseFloat(event.target.post.value);
-        var storage = parseFloat(event.target.storage.value);
+        var jeu = parseFloat(event.target.jeu.value);
+        var video = parseFloat(event.target.video.value);
 
-        //initialisation
-        var stockage = [];
-        stockage[4] = storage*0.1; // 0.1 c'était pour l'échelle du graph?
-        stockage[3] = stockage[4]/1.4;
-        stockage[2] = stockage[3]/1.4;
-        stockage[1] = stockage[2]/1.4;
-        stockage[0] = stockage[1];
+        // //initialisation
+        // var stockage = [];
+        // stockage[4] = storage*0.1; // 0.1 c'était pour l'échelle du graph?
+        // stockage[3] = stockage[4]/1.4;
+        // stockage[2] = stockage[3]/1.4;
+        // stockage[1] = stockage[2]/1.4;
+        // stockage[0] = stockage[1];
 
-        for (var i = 5; i <= 10; i++) {
-            stockage[i] = stockage[i - 1]+post*0.001;
-        };
+        // for (var i = 5; i <= 10; i++) {
+        //     stockage[i] = stockage[i - 1]+post*0.001;
+        // };
 
         // inserer
-        idparticipant = participants.insert({
+        currentVisiteur = participants.insert({
             prenom: prenom,
             avatar: avatar,
             couleur:couleur,
@@ -42,28 +44,14 @@ Template.profil.events({
 
             conso: conso,
             post: post,
-            stockage: stockage
+            jeu: jeu,
+            video: video,
         });
-        Router.go('/global', idparticipant);
-    },
-
-    'change #consoSlider': function (event) {
-
-        var collectedValue = Number( $(event.target).val() );
-        document.querySelector('#conso').value = collectedValue;
-    },
-    'change #postSlider': function (event) {
-
-        var collectedValue = Number( $(event.target).val() );
-        document.querySelector('#post').value = collectedValue;
-    },
-    'change #storageSlider': function (event) {
-
-        var collectedValue = Number( $(event.target).val() );
-        document.querySelector('#storage').innerHTML = collectedValue;
-    },
-
+        console.log("Submit", currentVisiteur);
+        // Router.go('/global',{_id: currentVisiteur} );
+        Session.set("cVisiteur",currentVisiteur)
+        Router.go("/global");
+    }
 
 
 });
-

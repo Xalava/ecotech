@@ -1,0 +1,55 @@
+<template name="user">
+	<!-- <hr/> -->
+
+	<section class="col-md-3">
+		{{#with visiteur}}
+		<h1>Votre consommation {{prenom}}</h1>
+		<br>
+		<div class="country china">
+			<p> </p>
+			<div class="dial">
+			  <div id="lePointeur" class="pointer rotativ"></div>
+			  <div class="amount"><br />Wh</div>
+			</div>
+
+
+
+		</div>
+			  {{/with}}
+	</section>
+
+	<section class="col-md-8 col-xs-offset-1">
+		<h1>Les gestes pour améliorer votre score</h1>
+
+		<form >			
+			<h3>Consommation électrique</h3>
+			<div class="checkbox">
+			    <label>
+					<input type="checkbox" name="veille"> Mettre en veille entre deux utilisation 
+				</label>
+			</div>
+			
+			<div class="checkbox">
+				<label>
+					
+					<input type="checkbox"> Éteindre complètement 
+				</label>
+			</div>
+			
+			<div class="checkbox">
+				<label>
+				<input type="checkbox"> Débrancher une fois chargé
+				</label>
+			</div>
+			
+			<h3>Achat</h3>
+			<div class="checkbox">
+				<label>
+
+				<input type="checkbox"> Choisir des machines avec un ecolabel 
+				</label>
+
+			</div>		 
+		</form>
+	</section>
+</template>
