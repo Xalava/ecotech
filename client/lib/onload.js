@@ -41,5 +41,7 @@ tempData = {
 };
 
 Meteor.startup(function() {
-	// Set up for each country group
+	
+
+    // levisiteur = participants.findOne({"prenom": "Visiteur"}).fetch()._id
 });

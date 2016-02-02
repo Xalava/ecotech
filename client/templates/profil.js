@@ -23,6 +23,8 @@ Template.profil.events({
         var jeu = parseFloat(event.target.jeu.value);
         var video = parseFloat(event.target.video.value);
 
+        var total = conso+ post/20 + jeu + video*2;
+
         // //initialisation
         // var stockage = [];
         // stockage[4] = storage*0.1; // 0.1 c'était pour l'échelle du graph?
@@ -46,6 +48,8 @@ Template.profil.events({
             post: post,
             jeu: jeu,
             video: video,
+
+            total: total
         });
         console.log("Submit", currentVisiteur);
         // Router.go('/global',{_id: currentVisiteur} );

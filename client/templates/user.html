@@ -3,18 +3,24 @@
 
 	<section class="col-md-3">
 		{{#with visiteur}}
+
 		<h1>Votre consommation {{prenom}}</h1>
-		<br>
-		<div class="country china">
-			<p> </p>
-			<div class="dial">
-			  <div id="lePointeur" class="pointer rotativ"></div>
-			  <div class="amount"><br />Wh</div>
+		<div class="row text-center">
+
+			<div class="country">
+				<div class="dial">
+				  <div id="lePointeur" class="pointer rotativ"></div>
+				  <!-- <div class="amount"><br />Wh</div> -->
+				</div>
 			</div>
-
-
-
 		</div>
+		<br>
+		<div class="row">
+
+			<canvas id="consoChart"></canvas>
+		</div>
+
+
 			  {{/with}}
 	</section>
 
@@ -31,8 +37,7 @@
 			
 			<div class="checkbox">
 				<label>
-					
-					<input type="checkbox"> Éteindre complètement 
+					<input type="checkbox"> Éteindre complètement une fois terminé
 				</label>
 			</div>
 			
@@ -49,7 +54,44 @@
 				<input type="checkbox"> Choisir des machines avec un ecolabel 
 				</label>
 
-			</div>		 
+			</div>	
+			<h3>Mails</h3>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> Limiter destinataires et personnes en copie
+				</label>
+
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> Utiliser des liens plutôt que des pièces jointes
+
+				</label>
+
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> Se désabonner des newsletters inutiles
+
+				</label>
+
+			</div>		
+			<h3>Serveurs</h3>
+			<div class="checkbox">
+				<label>
+
+				<input type="checkbox"> Limiter le stockage en ligne, privilégier les clés usb et disques externes
+
+				</label>
+
+			</div>	
+			<div class="checkbox">
+				<label>
+
+				<input type="checkbox"> Utiliser les favoris plutôt que des recherches à chaque fois
+				</label>
+
+			</div>	
 		</form>
 	</section>
 </template>
