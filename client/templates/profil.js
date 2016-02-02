@@ -16,6 +16,9 @@ Template.profil.events({
         // recuperation
         var prenom = event.target.prenom.value;
         var avatar = event.target.avatar.value;
+            if (avatar == ""){
+                avatar = "avatar1.svg"
+            }
         var couleur = event.target.couleur.value;
 
         var conso = parseFloat(event.target.conso.value);

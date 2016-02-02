@@ -2,54 +2,46 @@ var vitesse ;
 var levisiteur;
 var effort;
 
+var myTotalChart;
 
 
-// 	var displays = vitesse + "s"
-// 	$( ".pointer" ).css({
-// 		  "animation-duration": displays,
-// 		  "animation-name": "spin",
-// 		  "animation-iteration-count": "infinite",
-// 		  "animation-timing-function": "linear",
-// 	});
+Template.user.onCreated( function(){
+	levisiteur = participants.findOne(Session.get('cVisiteur'))||participants.findOne({"prenom": "Lambda"});
+	Session.set("effort", 1);
+	tempscycle = 30/levisiteur.total;
+});
 
 
-// // $(".pointer").replaceWith($(".pointer").clone(true))
-
-// // element = document.getElementById("lePointeur");
-
-// //   element.offsetWidth = element.offsetWidth;
-
-
-// 	vitesse = vitesse /2;
-
-// 	  $(".pointer").removeClass("rotativ").addClass("rotativ");
-	
-
-// 	//$( ".pointer" ).css( " animation-duration:","*=2" );
-
-// }
 Template.user.helpers({
 	visiteur: function () {
-    return participants.findOne(Session.get('cVisiteur'))||participants.findOne({"prenom": "Visiteur"});
+    return participants.findOne(Session.get('cVisiteur'))||participants.findOne({"prenom": "Lambda"});
   },
-
+  	percentage: function () {
+  	return 100/Session.get("effort");
+  },
+  barcolor:function() {
+	  	if (100/Session.get("effort")>75) {
+	  		return "progress-bar-danger"
+		} else if (100/Session.get("effort")>40) {
+			return "progress-bar-warning";
+		} else {
+			return "progress-bar-success"
+		}
+  }
 
 });
 
 
-
 Template.user.onRendered( function(){
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+// $(function () {
+//   $('[data-toggle="tooltip"]').tooltip()
+// })
 
 
 
 	// init
-	levisiteur = participants.findOne(Session.get('cVisiteur'))||participants.findOne({"prenom": "Visiteur"});
-	effort = 1;
-	tempscycle = 30/levisiteur.total;
+
 
 // todo si pas user, backup
 
@@ -74,19 +66,19 @@ $(function () {
 
 	});
 
-
+	// si changement update
 	$('input[type="checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-		console.log(this); // DOM element
-		console.log(event); // jQuery event
-		console.log(state); // true | false
+		// console.log(this); // DOM element
+		// console.log(event); // jQuery event
+		// console.log(state); // true | false
 		
 		if (!state) {
-			effort = effort * 1.2;
+			Session.set("effort", Session.get("effort") * 1.2);
 		}else {
-			effort = effort / 1.2;
+			Session.set("effort", Session.get("effort") / 1.2);
 		}
 
-		var displays = tempscycle * effort + "s";
+		var displays = tempscycle * Session.get("effort") + "s";
 		$( ".pointer" ).css({
 			  "animation-duration": displays,
 			  "animation-name": "spin",
@@ -96,7 +88,8 @@ $(function () {
 
 		$(".pointer").replaceWith($(".pointer").clone(true));
 
-		
+		//dataTotal.datasets[0].data[0] = levisiteur.total / effort;
+		//myTotalChart.update();
 	});
 
 
@@ -105,22 +98,23 @@ $(function () {
 
     Chart.defaults.global.responsive = true;
 
-    var dactx = document.getElementById("consoChart").getContext("2d");
+    var ctxRepart = document.getElementById("consoChart").getContext("2d");
+    // var ctxTotal = document.getElementById("totalChart").getContext("2d");
 
 
-    var data = [
+    var dataRepart = [
 	    {
-	        value: levisiteur.conso/3,
+	        value: levisiteur.conso,
 	        color:"#46BFBD",
 	        label: "Surf"
 	    },
 	    {
-	        value: levisiteur.post/50,
+	        value: levisiteur.post/20,
 	        color: "#e84436",
 	        label: "Messages"
 	    },
 	    {
-	        value: levisiteur.video,
+	        value: levisiteur.video*2,
 	        color: "#3bbff0",
 	        label: "Videos"
 	    },
@@ -131,26 +125,50 @@ $(function () {
 	    }
 	];
 
-   optionsChartjs = {
-
-
-
+   optionsChartRepart = {
               // String - Template string for single tooltips
         tooltipTemplate: "<%if (label){%><%=label%><%}%>",
-
-
-
     };
 
 
 
-
-
-	var myDoughnutChart = new Chart(dactx).Doughnut(data, optionsChartjs);
-
+	var myDoughnutChart = new Chart(ctxRepart).Doughnut(dataRepart, optionsChartRepart);
 
 
 
+	// var dataTotal = {
+	//     labels: [""],
+	//     datasets: [
+	//         {
+	//             label: "Consommation totale",
+	//             fillColor: "rgba(20,20,20,0.9)",
+	//             // strokeColor: "rgba(220,220,220,1)",
+	//             // pointColor: "rgba(220,220,220,1)",
+	//             // pointStrokeColor: "#fff",
+	//             // pointHighlightFill: "#fff",
+	//             pointHighlightStroke: "rgba(220,220,220,1)",
+	//             data: [levisiteur.total],
+	//         }
+	//     ]
+	// };
+
+
+ //   optionsChartTotal = {
+ //        scaleShowGridLines : false,
+ //    	barShowStroke : false,
+ //    //Boolean - Whether to show horizontal lines (except X axis)
+ //    scaleShowHorizontalLines: false,
+
+ //    //Boolean - Whether to show vertical lines (except Y axis)
+ //    scaleShowVerticalLines: false,
+
+ //    legendTemplate : "",
+
+
+ //    };
+
+
+	// myTotalChart = new Chart(ctxTotal).Bar(dataTotal, optionsChartTotal);
 
 
 

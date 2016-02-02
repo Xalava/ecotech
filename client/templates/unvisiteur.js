@@ -3,8 +3,8 @@ var randb;
 
 Template.unvisiteur.onCreated(function () {
 
-    randa = Math.random()*1000;
-    randb = Math.random()*400;
+    randa = Math.random()*950;
+    randb = Math.random()*600;
 });
 
 

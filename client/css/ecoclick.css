@@ -128,22 +128,7 @@ footer a{
 .dial,.pointer,.amount{
   width:100px;
 }
-/*.amount{
-  position: absolute;
-  top:0;
-  left:0;
-  height:75px;
-  opacity: 0;
-  color:yellow;
-  padding-top: 25px;
-  background: rgba(56,56,56,0.75);
-  transition: opacity 0.25s;
-  border-radius: 50px;
-  text-shadow: 0px 0px 5px #222;
-}
-.amount:hover{
-  opacity: 1;
-}*/
+
 .country{
   width:150px;
   margin-left : 45px;
@@ -171,41 +156,30 @@ footer a{
 }
 
 
-
-/*    $human-friendly-country: nth($row, 1);
-    $country: nth($row, 2);
-    $value: nth($row, 3);
-    $human-friendly-value: nth($row,4);
-
-("China" china 4693000000 "4.7 billion")*/
-
-.amount:before{
-/*      content: "4.7 ";
-*/    }
-
-
-
-
-/*@each $row in $energy-usage {
-    $human-friendly-country: nth($row, 1);
-    $country: nth($row, 2);
-    $value: nth($row, 3);
-    $human-friendly-value: nth($row,4);
-
-    .#{$country} p:before{
-      content: $human-friendly-country;
-    }
-  
-    .#{$country} .pointer{
-        animation-duration: 100 / ($value / (365*24*3600))*1s;
-    }
-
-    .#{$country} .amount:before{
-      content: $human-friendly-value;
-    }
-}*/
-
-
 #disp{
   border: 1px black;
+}
+
+.svgboard {
+  margin: auto auto;
+}
+
+
+
+.progress-bar-danger {
+
+  background-color: #e84436 !important;
+}
+
+.prenomdisp {
+  overflow: hidden;
+  /*color: #FFF;*/
+}
+.userdisp {
+  background-color: #EEE;
+  border-radius: 10px;
+}
+
+.userdisp img {
+  margin: 10px;
 }

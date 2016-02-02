@@ -4,7 +4,19 @@
 	<section class="col-md-3">
 		{{#with visiteur}}
 
-		<h1>Votre consommation {{prenom}}</h1>
+
+		<h1>Votre consommation </h1>
+		<br/>
+
+		<div class="row">
+			<div class="progress">
+			  <div class="progress-bar {{barcolor}}" role="progressbar" aria-valuenow={{percentage}}
+			  aria-valuemin="0" aria-valuemax="100" style="width: {{percentage}}%; ">
+			  </div>
+			</div>
+			<!-- <canvas id="totalChart"></canvas> -->
+		</div>
+
 		<div class="row text-center">
 
 			<div class="country">
@@ -18,6 +30,21 @@
 		<div class="row">
 
 			<canvas id="consoChart"></canvas>
+		</div>
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<div class="row text-center userdisp text-center">
+			<div class="col-md-4 ">
+				<img class="img-responsive  img-rounded" src="{{avatar}}">
+			</div>
+			<div class="col-md-8">
+				<h3 class="prenomdisp">{{prenom}}</h3>
+			</div>
 		</div>
 
 
