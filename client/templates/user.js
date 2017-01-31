@@ -106,7 +106,7 @@ Template.user.onRendered( function(){
 	    {
 	        value: levisiteur.conso,
 	        color:"#46BFBD",
-	        label: "Surf"
+	        label: "Navigation"
 	    },
 	    {
 	        value: levisiteur.post/20,
